@@ -1,0 +1,10 @@
+{
+  "name": "checkmate55-room-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Authoritative room server for CHECKMATE 55: OVERRIDE co-op and Driverless Duel.",
+  "main": "server.cjs",
+  "scripts": { "start": "node server.cjs", "test": "node --test test/*.test.cjs" },
+  "engines": { "node": ">=18" },
+  "dependencies": { "ws": "8.18.0" }
+}

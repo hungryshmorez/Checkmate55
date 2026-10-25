@@ -1,0 +1,3 @@
+newmtl highway-sedan
+Kd 1 1 1
+map_Kd highway-sedan_baseColor.jpg

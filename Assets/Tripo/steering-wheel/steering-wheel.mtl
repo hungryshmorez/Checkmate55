@@ -1,0 +1,3 @@
+newmtl steering-wheel
+Kd 1 1 1
+map_Kd steering-wheel_baseColor.jpg

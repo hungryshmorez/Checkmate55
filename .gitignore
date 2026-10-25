@@ -1,0 +1,16 @@
+# Unity
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/Builds/*
+!/Builds/WebGL/
+/[Ll]ogs/
+/[Uu]serSettings/
+*.csproj
+*.sln
+# tools
+node_modules/
+Tools/CSharpTests/bin/
+Tools/CSharpTests/obj/
+.DS_Store

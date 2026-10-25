@@ -1,0 +1,4 @@
+luxury-seat: a 3D model made by Tripo AI from a text description, converted to OBJ.
+Description: Single premium automobile front seat with integrated headrest, viewed from rear, warm gray leather upholstery with stitched seams, sculpted seat back and lower storage pocket, black base. Realistic clean low poly, no logos.
+Model: P1-20260311
+Made: 2026-10-20

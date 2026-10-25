@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d37821cfa88773f28e2da5b72046a04, type: 3}
+  m_Name: diagnostics
+  m_EditorClassIdentifier: Assembly-CSharp::Checkmate55.ChessChallenge
+  id: diagnostics
+  title: DIAGNOSTICS
+  FEN: 4k3/q7/8/8/8/8/6KP/R7 w - - 0 1
+  playerColor: w
+  objectiveType: 2
+  maxMoves: 3
+  road: 0
+  targetPiece: q
+  hintMove: a1a7
+  hintText: The queen carries the diagnostic key.
+  resultText: DIAGNOSTICS CONNECTED / SEAT LOCK RELEASED
+  successCondition: check
+  failCondition: move-budget-or-draw
+  guidanceText: Capture the black queen to connect diagnostics and release seat controls.
+  rewardEvent: security.diagnostics

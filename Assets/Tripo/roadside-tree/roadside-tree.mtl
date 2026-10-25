@@ -1,0 +1,3 @@
+newmtl roadside-tree
+Kd 1 1 1
+map_Kd roadside-tree_baseColor.jpg

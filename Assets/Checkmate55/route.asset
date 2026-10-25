@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d37821cfa88773f28e2da5b72046a04, type: 3}
+  m_Name: route
+  m_EditorClassIdentifier: Assembly-CSharp::Checkmate55.ChessChallenge
+  id: route
+  title: NAVIGATION OVERRIDE
+  FEN: 8/pp6/8/8/7k/RP6/2N5/6K1 w - - 0 1
+  playerColor: w
+  objectiveType: 0
+  maxMoves: 3
+  road: 1
+  targetPiece: 
+  hintMove: a3a4
+  hintText: "A normal rook check works too. Hidden alternative: c2 \u2192 f3 at 70+
+    MPH."
+  resultText: NAVIGATION RELEASED / SERVICE LAY-BY
+  successCondition: check
+  failCondition: move-budget-or-draw
+  guidanceText: Check the king to redirect navigation. Active files follow the lane.
+    Normal chess or a discovered road command both work.
+  rewardEvent: security.route

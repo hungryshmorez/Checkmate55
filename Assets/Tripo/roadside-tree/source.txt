@@ -1,0 +1,4 @@
+roadside-tree: a 3D model made by Tripo AI from a text description, converted to OBJ.
+Description: One leafy roadside deciduous tree, rounded irregular green canopy with branching brown trunk, realistic stylized low poly, daylight summer greens.
+Model: P1-20260311
+Made: 2026-10-20

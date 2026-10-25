@@ -1,0 +1,68 @@
+# OPTIONAL: tests everything, builds the Unity WebGL player on GitHub's servers, and publishes it to GitHub Pages.
+# Needs Unity licence secrets. If you do not have them, ignore this file and use deploy-prebuilt.yml instead.
+#
+# One-time setup (repository Settings):
+#   1. Pages -> Build and deployment -> Source: "GitHub Actions"
+#   2. Secrets and variables -> Actions -> add UNITY_LICENSE, UNITY_EMAIL, UNITY_PASSWORD
+#      (see https://game.ci/docs/github/activation - a free Personal licence works)
+name: Deploy CHECKMATE 55 to GitHub Pages
+on:
+  workflow_dispatch: {}          # run by hand (Actions tab) once the three Unity secrets exist; the everyday route is deploy-prebuilt.yml
+permissions: { contents: read, pages: write, id-token: write }
+concurrency: { group: pages, cancel-in-progress: true }
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Chess engine, AI and WebGL plugin (must be up to date)
+        run: node --test Tools/Chess/test/*.test.cjs
+      - name: Room server and network simulation
+        run: cd Tools/Server && npm ci && node --test test/*.test.cjs
+      - uses: actions/setup-dotnet@v4
+        with: { dotnet-version: 8.0.x }
+      - name: Game logic
+        run: cd Tools/CSharpTests && dotnet run -v q
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: Library
+          key: Library-WebGL-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: Library-WebGL-
+      - uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          targetPlatform: WebGL
+          unityVersion: auto            # read from ProjectSettings/ProjectVersion.txt
+          buildName: Checkmate55
+      - name: Check the build before publishing
+        run: |
+          set -e
+          dir=build/WebGL/Checkmate55
+          test -f "$dir/index.html"
+          ls -la "$dir/Build"
+          # GitHub Pages: 100 MB per file, 1 GB per site
+          find "$dir" -type f -size +95M -print -exec false {} + || { echo "a file is too large for GitHub Pages"; exit 1; }
+          # Pages cannot send Content-Encoding for .br/.gz files: the project must build uncompressed
+          if ls "$dir"/Build/*.br "$dir"/Build/*.gz >/dev/null 2>&1; then echo "compressed build files found: set Player Settings > Publishing > Compression Format = Disabled"; exit 1; fi
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: build/WebGL/Checkmate55 }
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: { name: github-pages, url: '${{ steps.deployment.outputs.page_url }}' }
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

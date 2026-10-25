@@ -1,0 +1,4 @@
+highway-sedan: a 3D model made by Tripo AI from a text description, converted to OBJ.
+Description: Modern premium four door sedan, pearl silver body, dark glass windows, black rubber tires, red rear lamps, restrained realistic low poly automobile, no logos.
+Model: P1-20260311
+Made: 2026-10-20

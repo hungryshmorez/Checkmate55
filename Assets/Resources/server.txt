@@ -1,0 +1,5 @@
+# The address of your CHECKMATE 55 room server (needed only for online Co-op Escape and Driverless Duel).
+# Replace the line below with your own, e.g.   wss://checkmate55-rooms.onrender.com
+# Lines that do not start with ws:// or wss:// are ignored. A page served over https needs wss://.
+# (Players can also type an address in the lobby, or add ?server=wss://... to the game's link.)
+ws://localhost:8080

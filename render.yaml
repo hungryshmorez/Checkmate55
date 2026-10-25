@@ -1,0 +1,12 @@
+# Render.com blueprint: the CHECKMATE 55 room server (free plan).
+services:
+  - type: web
+    name: checkmate55-rooms
+    runtime: node
+    plan: free
+    buildCommand: cd Tools/Server && npm ci --omit=dev
+    startCommand: node Tools/Server/server.cjs
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"

@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"><title>CHECKMATE 55</title>
+<style>html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#17232a;touch-action:none;overscroll-behavior:none}#unity-canvas{display:block;width:100%;height:100%;outline:none;touch-action:none}#loading{position:absolute;inset:0;display:grid;place-content:center;color:#d9e4e4;background:#17232a;font:13px system-ui;letter-spacing:3px;text-align:center}#loading strong{font-size:28px;font-weight:400;letter-spacing:5px;margin-bottom:20px}progress{width:220px;height:2px;margin:24px auto;accent-color:#a8d5d9}</style></head>
+<body><canvas id="unity-canvas" tabindex="0"></canvas><div id="loading"><strong>CHECKMATE 55</strong><span>ROAD CHESS · THE CAR THINKS IN CHESS</span><progress id="progress" max="1" value="0"></progress></div>
+<script>
+const canvas=document.getElementById('unity-canvas');
+canvas.addEventListener('contextmenu',e=>e.preventDefault());
+canvas.addEventListener('touchmove',e=>e.preventDefault(),{passive:false});
+document.addEventListener('gesturestart',e=>e.preventDefault(),{passive:false});
+window.cm55PixelRatio=Math.min(window.devicePixelRatio||1,matchMedia('(pointer:coarse)').matches?1.2:1.75);
+const loader=document.createElement('script');loader.src='Build/{{{ LOADER_FILENAME }}}';loader.onload=()=>createUnityInstance(canvas,{
+ dataUrl:'Build/{{{ DATA_FILENAME }}}',frameworkUrl:'Build/{{{ FRAMEWORK_FILENAME }}}',codeUrl:'Build/{{{ CODE_FILENAME }}}',streamingAssetsUrl:'StreamingAssets',companyName:'Checkmate',productName:'CHECKMATE 55',productVersion:'0.1',devicePixelRatio:window.cm55PixelRatio,matchWebGLToCanvasSize:true
+},p=>document.getElementById('progress').value=p).then(instance=>{window.unityInstance=instance;document.getElementById('loading').remove();canvas.focus();}).catch(()=>{document.getElementById('loading').textContent='The ride could not load. Please reload.';});document.body.appendChild(loader);
+</script></body></html>

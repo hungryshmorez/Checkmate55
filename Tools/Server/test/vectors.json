@@ -1,0 +1,17 @@
+{
+  "note": "Shared by Tools/Server/test/room.test.cjs and Tools/CSharpTests (SystemsTests): the JS server and the C# Core must agree on every number here.",
+  "authority": {
+    "start": 60, "max": 100, "regenPerSecond": 3.2,
+    "actions": {
+      "RadioHijack": [8, 12], "WindowClose": [8, 10], "TintUp": [12, 18], "ClimateCut": [12, 20], "LockCycle": [14, 15],
+      "SeatAdjust": [22, 30], "ForcedLaneChange": [24, 22], "HazardGenerate": [34, 28], "RouteManipulate": [48, 60], "ExtremeAcceleration": [42, 50]
+    }
+  },
+  "coop": [
+    { "mode": "shared", "players": 2, "turn": 0, "operator": -1, "supportOperator": -1, "confirm": { "0": true, "1": true } },
+    { "mode": "alternating", "players": 2, "turn": 0, "operator": 0, "supportOperator": -1, "confirm": { "0": true, "1": false } },
+    { "mode": "alternating", "players": 2, "turn": 1, "operator": 1, "supportOperator": -1, "confirm": { "0": false, "1": true } },
+    { "mode": "assist", "players": 2, "turn": 0, "operator": 0, "supportOperator": 1, "confirm": { "0": true, "1": false } },
+    { "mode": "assist", "players": 1, "turn": 5, "operator": 0, "supportOperator": 0, "confirm": { "0": true, "1": false } }
+  ]
+}

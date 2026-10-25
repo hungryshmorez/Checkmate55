@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d37821cfa88773f28e2da5b72046a04, type: 3}
+  m_Name: window
+  m_EditorClassIdentifier: Assembly-CSharp::Checkmate55.ChessChallenge
+  id: window
+  title: WINDOW RELEASE
+  FEN: 4k1r1/p7/8/8/8/8/R7/6K1 w - - 0 1
+  playerColor: w
+  objectiveType: 3
+  maxMoves: 1
+  road: 0
+  targetPiece: 
+  hintMove: g1h2
+  hintText: Step off the rook's file. Survive its reply.
+  resultText: WINDOW LATCH RELEASED / 15 SECONDS
+  successCondition: check
+  failCondition: move-budget-or-draw
+  guidanceText: Your king is in check. Get it safe through one vehicle reply to release
+    the windows for 15 seconds.
+  rewardEvent: security.window

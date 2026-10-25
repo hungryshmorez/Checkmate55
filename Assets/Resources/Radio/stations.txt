@@ -1,0 +1,20 @@
+# Radio presets. Lines starting with "#" are ignored.
+#
+#   base | <web folder that holds your music; it must contain manifest.json>
+#   <1-5> | STATION NAME | label | SOURCE
+#
+# SOURCE can be:
+#   manifest:music/driftwave/ ; !music/tanky/some-album/   every track in your Media repo's manifest.json under the first folder(s),
+#                                                          skipping anything under a folder marked with "!"; played shuffled
+#   youtube:PLAYLISTID                                     a YouTube playlist (a full link with list=... also works).
+#                                                          Several playlists on one station: youtube:PLAAA,PLBBB  (one is picked each time you tune in)
+#   some/file.mp3  or  https://...                         one song, looped
+# A file named preset1..preset5 inside Assets/Resources/Radio always wins over a web source.
+# The Media repo must stay PUBLIC. YouTube stations only work in the WebGL build, and cannot use the balance / fader.
+base | https://hungryshmorez.github.io/Media/
+1 | DRIFTWAVE STATIC | slushwave | manifest:music/driftwave/
+2 | SHMOREZ | shmorez | manifest:music/shmorez/
+3 | TANKY JOHNSON | tanky | manifest:music/tanky/ ; !music/tanky/homer-simpson-last-call-lullabies/
+4 | NCP THERAPY RADIO | youtube | youtube:PLPug0RGgea9rPoVpu8ytw7dRHLZb4RNZc
+# Station 5 is waiting for your next YouTube playlist: remove the leading "#" and paste its id or link.
+# 5 | STATION 5 | youtube | youtube:PUT_PLAYLIST_ID_OR_LINK_HERE

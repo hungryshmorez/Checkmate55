@@ -1,0 +1,4 @@
+steering-wheel: a 3D model made by Tripo AI from a text description, converted to OBJ.
+Description: Premium car steering wheel, dark charcoal leather round rim, three brushed metal spokes, small unbranded central airbag hub. Isolated single rigid object realistic low poly.
+Model: P1-20260311
+Made: 2026-10-20

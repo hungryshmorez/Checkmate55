@@ -1,0 +1,25 @@
+# Publishes a WebGL build that YOU made in Unity (File > Build Settings > WebGL > Build into Builds/WebGL) and committed.
+# No Unity licence or secrets needed. Pages must be set to Source: GitHub Actions (Settings > Pages).
+name: Publish prebuilt WebGL to GitHub Pages
+on:
+  push: { branches: [main], paths: ['Builds/WebGL/**'] }
+  workflow_dispatch: {}
+permissions: { contents: read, pages: write, id-token: write }
+concurrency: { group: pages, cancel-in-progress: true }
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: { name: github-pages, url: '${{ steps.deployment.outputs.page_url }}' }
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check the build
+        run: |
+          set -e
+          dir=Builds/WebGL
+          test -f "$dir/index.html" || { echo "Builds/WebGL/index.html is missing: commit the CONTENTS of the Unity build folder there"; exit 1; }
+          if find "$dir" -type f -size +95M | grep -q .; then echo "a file is over GitHub Pages' 100 MB limit"; exit 1; fi
+          if ls "$dir"/Build/*.br "$dir"/Build/*.gz "$dir"/Build/*.unityweb >/dev/null 2>&1; then echo "compressed build: set Player Settings > Publishing > Compression Format = Disabled and rebuild"; exit 1; fi
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: Builds/WebGL }
+      - id: deployment
+        uses: actions/deploy-pages@v4
